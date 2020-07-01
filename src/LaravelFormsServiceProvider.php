@@ -9,6 +9,7 @@ use michalkortas\LaravelForms\View\Components\Date;
 use michalkortas\LaravelForms\View\Components\DateTime;
 use michalkortas\LaravelForms\View\Components\Email;
 use michalkortas\LaravelForms\View\Components\Hidden;
+use michalkortas\LaravelForms\View\Components\Nullean;
 use michalkortas\LaravelForms\View\Components\Number;
 use michalkortas\LaravelForms\View\Components\Password;
 use michalkortas\LaravelForms\View\Components\Phone;
@@ -34,6 +35,7 @@ class LaravelFormsServiceProvider extends ServiceProvider
             DateTime::class,
             Email::class,
             Hidden::class,
+            Nullean::class,
             Number::class,
             Password::class,
             Phone::class,
