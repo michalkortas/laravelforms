@@ -2,12 +2,14 @@
 
 namespace michalkortas\LaravelForms;
 
+use michalkortas\LaravelForms\View\Components\Boolean;
 use michalkortas\LaravelForms\View\Components\Checkbox;
 use michalkortas\LaravelForms\View\Components\Color;
 use michalkortas\LaravelForms\View\Components\Date;
 use michalkortas\LaravelForms\View\Components\DateTime;
 use michalkortas\LaravelForms\View\Components\Email;
 use michalkortas\LaravelForms\View\Components\Hidden;
+use michalkortas\LaravelForms\View\Components\Nullean;
 use michalkortas\LaravelForms\View\Components\Number;
 use michalkortas\LaravelForms\View\Components\Password;
 use michalkortas\LaravelForms\View\Components\Phone;
@@ -23,15 +25,17 @@ class LaravelFormsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'laravelforms');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'laravelforms');
 
         $this->loadViewComponentsAs('form', [
+            Boolean::class,
             Checkbox::class,
             Color::class,
             Date::class,
             DateTime::class,
             Email::class,
             Hidden::class,
+            Nullean::class,
             Number::class,
             Password::class,
             Phone::class,
