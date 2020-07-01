@@ -22,8 +22,6 @@ Out of the box supports Laravel validation errors.
 
 ## Licence
 MIT
-## Current version
-v1.0.0
 ## Documentation & usage 
 Documentation is available on package website https://webroad.dev/packages/laravelforms/documentation
 ## Support
