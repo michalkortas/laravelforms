@@ -99,9 +99,9 @@ class Boolean extends Component
         $feedbackClass = null,
         $valueFalse = false,
         $valueTrue = true,
-        $textFalse = 'O',
-        $textTrue = 'I',
-        $togglerClass = 'btn-light'
+        $textFalse = 'No',
+        $textTrue = 'Yes',
+        $togglerClass = 'btn-secondary'
     )
     {
         $this->id = $id;
