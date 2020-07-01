@@ -24,12 +24,5 @@
             "michalkortas\\BladeForms\\": "src/"
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "michalkortas\\LaravelForms\\LaravelFormsServiceProvider"
-            ]
-        }
-    },
     "minimum-stability": "dev"
 }
