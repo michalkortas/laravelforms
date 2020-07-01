@@ -4,7 +4,7 @@
     @endisset
 
     <div class="btn-group w-100 btn-group-toggle" data-toggle="buttons">
-        <label class="btn w-50 {{$togglerClass}} btn-radio {{ $isSelected($valueFalse) ? 'active' : '' }}">
+        <label class="btn w-50 {{$togglerClass}} {{ $isSelected($valueFalse) ? 'active' : '' }}">
             <input
                 type="radio"
                 @isset($name) name="{{$name}}" @endisset
@@ -17,7 +17,7 @@
                 @if($readonly) readonly @endif>
             {{$textFalse}}
         </label>
-        <label class="btn w-50 {{$togglerClass}} btn-radio {{ $isSelected($valueTrue) ? 'active' : '' }}">
+        <label class="btn w-50 {{$togglerClass}} {{ $isSelected($valueTrue) ? 'active' : '' }}">
             <input
                 type="radio"
                 @isset($name) name="{{$name}}" @endisset
