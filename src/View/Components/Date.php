@@ -1,6 +1,6 @@
 <?php
 
-namespace michalkortas\LaraveleForms\View\Components;
+namespace michalkortas\LaravelForms\View\Components;
 
 use Illuminate\View\Component;
 
