@@ -31,7 +31,7 @@ Laravel 7 is only supported version at this time
 
 Register new ServiceProvider (only if not exists - Laravel register it automatically, but who knows?) in config/app.php
 ```php
-michalkortas\BladeForms\LaravelFormsServiceProvider::class
+michalkortas\LaravelForms\LaravelFormsServiceProvider::class
 ```
 ## Example
 ### Text input
