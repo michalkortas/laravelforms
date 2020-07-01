@@ -1,0 +1,51 @@
+<?php
+
+namespace michalkortas\LaravelForms;
+
+use michalkortas\LaravelForms\View\Components\Checkbox;
+use michalkortas\LaravelForms\View\Components\Color;
+use michalkortas\LaravelForms\View\Components\Date;
+use michalkortas\LaravelForms\View\Components\DateTime;
+use michalkortas\LaravelForms\View\Components\Email;
+use michalkortas\LaravelForms\View\Components\Hidden;
+use michalkortas\LaravelForms\View\Components\Number;
+use michalkortas\LaravelForms\View\Components\Password;
+use michalkortas\LaravelForms\View\Components\Phone;
+use michalkortas\LaravelForms\View\Components\Radio;
+use michalkortas\LaravelForms\View\Components\Select;
+use michalkortas\LaravelForms\View\Components\SelectMultiple;
+use michalkortas\LaravelForms\View\Components\Text;
+use michalkortas\LaravelForms\View\Components\Textarea;
+use michalkortas\LaravelForms\View\Components\Url;
+use Illuminate\Support\ServiceProvider;
+
+class LaravelFormsServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'laravelforms');
+
+        $this->loadViewComponentsAs('form', [
+            Checkbox::class,
+            Color::class,
+            Date::class,
+            DateTime::class,
+            Email::class,
+            Hidden::class,
+            Number::class,
+            Password::class,
+            Phone::class,
+            Radio::class,
+            Select::class,
+            SelectMultiple::class,
+            Text::class,
+            Textarea::class,
+            Url::class,
+        ]);
+    }
+
+    public function register()
+    {
+        //
+    }
+}

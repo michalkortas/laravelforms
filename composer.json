@@ -1,0 +1,35 @@
+{
+    "name": "michalkortas/laravelforms",
+    "description": "A simple library to make Laravel Blade forms faster and easier",
+    "type": "laravel-library",
+    "keywords": [
+        "laravel",
+        "blade",
+        "forms",
+        "bootstrap"
+    ],
+    "homepage": "https://webroad.dev/packages/laravelforms/documentation",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michal Kortas",
+            "email": "michal@webroad.pl"
+        }
+    ],
+    "require": {
+        "php": ">=7"
+    },
+    "autoload": {
+        "psr-4": {
+            "michalkortas\\BladeForms\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "michalkortas\\LaravelForms\\LaravelFormsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
