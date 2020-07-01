@@ -17,7 +17,7 @@
     >
 
         <div class="btn-group w-100 btn-group-toggle" data-toggle="buttons">
-            <label class="btn w-50 btn-light btn-radio @if((old($name ?? '') ?? $value == false)) active @endif">
+            <label class="btn w-50 {{$togglerClass}} btn-radio @if((old($name ?? '') ?? $value == false)) active @endif">
                 <input
                     type="radio"
                     @isset($name) name="{{$name}}" @endisset
@@ -30,11 +30,11 @@
                     @if($readonly) readonly @endif>
                 {{$textFalse}}
             </label>
-            <label class="btn w-50 btn-light btn-radio @if((old($name ?? '') ?? $value == true)) active @endif">
+            <label class="btn w-50 {{$togglerClass}} btn-radio @if((old($name ?? '') ?? $value == true)) active @endif">
                 <input
                     type="radio"
                     @isset($name) name="{{$name}}" @endisset
-                    value="{{$valueFalse}}"
+                    value="{{$valueTrue}}"
                     autocomplete="off"
                     @if(($data->$name ?? true) == true) checked @endif
                     class="@error($name) is-invalid @enderror"

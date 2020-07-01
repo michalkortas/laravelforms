@@ -46,6 +46,26 @@ class Boolean extends Component
      * @var null
      */
     public $id;
+    /**
+     * @var string
+     */
+    public $togglerClass;
+    /**
+     * @var string
+     */
+    public $textTrue;
+    /**
+     * @var string
+     */
+    public $textFalse;
+    /**
+     * @var bool
+     */
+    public $valueTrue;
+    /**
+     * @var bool
+     */
+    public $valueFalse;
 
     /**
      * Create a new component instance.
@@ -60,6 +80,11 @@ class Boolean extends Component
      * @param null $groupClass
      * @param null $labelClass
      * @param null $feedbackClass
+     * @param bool $valueFalse
+     * @param bool $valueTrue
+     * @param string $textFalse
+     * @param string $textTrue
+     * @param string $togglerClass
      */
     public function __construct(
         $id = null,
@@ -71,7 +96,12 @@ class Boolean extends Component
         $disabled = false,
         $groupClass = null,
         $labelClass = null,
-        $feedbackClass = null
+        $feedbackClass = null,
+        $valueFalse = false,
+        $valueTrue = true,
+        $textFalse = 'O',
+        $textTrue = 'I',
+        $togglerClass = 'btn-light'
     )
     {
         $this->id = $id;
@@ -84,6 +114,11 @@ class Boolean extends Component
         $this->groupClass = $groupClass;
         $this->labelClass = $labelClass;
         $this->feedbackClass = $feedbackClass;
+        $this->valueFalse = $valueFalse;
+        $this->valueTrue = $valueTrue;
+        $this->textFalse = $textFalse;
+        $this->textTrue = $textTrue;
+        $this->togglerClass = $togglerClass;
     }
 
     /**
