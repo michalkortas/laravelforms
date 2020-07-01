@@ -2,6 +2,7 @@
 
 namespace michalkortas\LaravelForms;
 
+use michalkortas\LaravelForms\View\Components\Boolean;
 use michalkortas\LaravelForms\View\Components\Checkbox;
 use michalkortas\LaravelForms\View\Components\Color;
 use michalkortas\LaravelForms\View\Components\Date;
@@ -23,9 +24,10 @@ class LaravelFormsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'laravelforms');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'laravelforms');
 
         $this->loadViewComponentsAs('form', [
+            Boolean::class,
             Checkbox::class,
             Color::class,
             Date::class,

@@ -122,6 +122,17 @@ class Boolean extends Component
     }
 
     /**
+     * Determine if the given option is the current selected option.
+     *
+     * @param  string  $option
+     * @return bool
+     */
+    public function isSelected($option)
+    {
+        return $option == $this->value;
+    }
+
+    /**
      * Get the view / contents that represent the component.
      *
      * @return \Illuminate\View\View|string
