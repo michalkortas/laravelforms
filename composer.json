@@ -21,7 +21,14 @@
     },
     "autoload": {
         "psr-4": {
-            "michalkortas\\BladeForms\\": "src/"
+            "michalkortas\\LaravelForms\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "michalkortas\\LaravelForms\\LaravelFormsServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev"
