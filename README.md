@@ -59,7 +59,7 @@ Gives select input
     <label>This is simple text label</label>
     <select name="select-input" class="form-control">
         <option value="1">one</option>
-        <option selected="&quot;selected&quot;" value="2">two</option>
+        <option selected="selected" value="2">two</option>
         <option value="3">three</option>
     </select>
 </div>
