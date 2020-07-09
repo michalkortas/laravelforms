@@ -11,10 +11,7 @@
                 value="{{$valueFalse}}"
                 autocomplete="off"
                 {{ $isSelected($valueFalse) ? 'checked' : '' }}
-                class="@error($name) is-invalid @enderror"
-                @if($required) required @endif
-                @if($disabled) disabled @endif
-                @if($readonly) readonly @endif>
+                class="@error($name) is-invalid @enderror" {{$attributes}}>
             {{$textFalse}}
         </label>
         <label class="btn w-50 {{$togglerClass}} {{ $isSelected($valueTrue) ? 'active' : '' }}">
@@ -24,10 +21,7 @@
                 value="{{$valueTrue}}"
                 autocomplete="off"
                 {{ $isSelected($valueTrue) ? 'checked' : '' }}
-                class="@error($name) is-invalid @enderror"
-                @if($required) required @endif
-                @if($disabled) disabled @endif
-                @if($readonly) readonly @endif>
+                class="@error($name) is-invalid @enderror" {{$attributes}}>
             {{$textTrue}}
         </label>
     </div>

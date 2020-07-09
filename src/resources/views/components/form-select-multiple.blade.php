@@ -7,10 +7,6 @@
         @isset($id) id="{{$id}}" @endisset
     @isset($name) name="{{$name}}" @endisset
         class="form-control @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
-        @if($required) required @endif
-        @if($disabled) disabled @endif
-        @if($autofocus) autofocus @endif
-        @if($readonly) readonly @endif
         {{$attributes}}
         multiple="true"
         aria-multiselectable="true"

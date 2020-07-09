@@ -6,18 +6,10 @@
     <input
         value="{{old($name ?? '') ?? $value}}"
         type="number"
-        @isset($min) min="{{$min}}" @endisset
-        @isset($max) max="{{$max}}" @endisset
-        @isset($step) step="{{$step}}" @endisset
         @isset($id) id="{{$id}}" @endisset
         @isset($name) name="{{$name}}" @endisset
-        @isset($pattern) pattern="{{$pattern}}" @endisset
         class="form-control @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
         placeholder="{{$placeholder ?? $label ?? ''}}"
-        @if($required) required @endif
-        @if($disabled) disabled @endif
-        @if($autofocus) autofocus @endif
-        @if($readonly) readonly @endif
         {{$attributes}}
     >
 

@@ -17,10 +17,6 @@
                     @isset($id) id="{{$id}}" @endisset
                     @isset($name) name="{{$name}}" @endisset
                     class="form-check-input @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
-                    @if($required) required @endif
-                    @if($disabled) disabled @endif
-                    @if($autofocus) autofocus @endif
-                    @if($readonly) readonly @endif
                     {{$attributes}} {{ $isSelected($object->$optionValueKey) ? 'checked' : '' }}>
                 <label class="form-check-label" for="{{$name}}_val_{{$object->$optionValueKey}}">
                     {{$object->$optionTextKey}}
@@ -37,10 +33,6 @@
                     @isset($id) id="{{$id}}" @endisset
                     @isset($name) name="{{$name}}" @endisset
                     class="form-check-input @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
-                    @if($required) required @endif
-                    @if($disabled) disabled @endif
-                    @if($autofocus) autofocus @endif
-                    @if($readonly) readonly @endif
                     {{$attributes}} {{ $isSelected($optionValue) ? 'checked' : '' }}>
                 <label class="form-check-label" for="{{$name}}_val_{{$optionValue}}">
                     {{$optionText}}
