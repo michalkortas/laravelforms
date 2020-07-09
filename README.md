@@ -36,7 +36,7 @@ Register new ServiceProvider (only if not exists - Laravel register it automatic
 michalkortas\LaravelForms\LaravelFormsServiceProvider::class
 ```
 
-## Last changes (v1.1.0)
+## Last changes (v1.1.x)
 - Added support for Laravel Models
 - Removed unused parameters
 
