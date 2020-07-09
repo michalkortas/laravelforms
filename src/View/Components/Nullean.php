@@ -82,6 +82,10 @@ class Nullean extends Component
      * @var null
      */
     public $class;
+    /**
+     * @var null
+     */
+    public $valueNull;
 
     /**
      * Create a new component instance.
