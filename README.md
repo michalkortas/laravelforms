@@ -99,5 +99,4 @@ HTML output:
 #### Inputs with multiple values (eg. select multiple, checkbox)
 If you want to get data from your Pivot relation to check multiple options, pass via model-key attribute relation path to related table. Last part of this path is a table field, that should be use to <a href="https://laravel.com/docs/7.x/collections#method-pluck">verify checked/selected state</a>. 
 ```php
-<x-form-checkbox :model="$model" model-key="departments.id" :options="$departments" label="Wybierz dział" />
-```
+<x-form-checkbox :model="$model" model-key="departments.id" :options="$departments" label="Select department" />
