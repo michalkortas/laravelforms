@@ -195,6 +195,11 @@ class SelectMultiple extends Component
                 }
             }
         }
+
+        if(!is_array($this->optionTextKey))
+        {
+            $this->optionTextKey = [$this->optionTextKey];
+        }
     }
 
     /**
