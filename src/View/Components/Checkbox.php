@@ -19,22 +19,6 @@ class Checkbox extends Component
      */
     public $value;
     /**
-     * @var bool
-     */
-    public $readonly;
-    /**
-     * @var bool
-     */
-    public $required;
-    /**
-     * @var bool
-     */
-    public $disabled;
-    /**
-     * @var bool
-     */
-    public $autofocus;
-    /**
      * @var null
      */
     public $groupClass;
@@ -46,10 +30,6 @@ class Checkbox extends Component
      * @var null
      */
     public $feedbackClass;
-    /**
-     * @var null
-     */
-    public $id;
     /**
      * @var null
      */
@@ -78,6 +58,22 @@ class Checkbox extends Component
      * @var bool
      */
     public $inline;
+    /**
+     * @var null
+     */
+    public $class;
+    /**
+     * @var null
+     */
+    public $modelKey;
+    /**
+     * @var array
+     */
+    public $model;
+    /**
+     * @var null
+     */
+    public $id;
 
     /**
      * Create a new component instance.
@@ -93,13 +89,13 @@ class Checkbox extends Component
      * @param null $emptyOptionText
      * @param string $optionValueKey
      * @param string $optionTextKey
-     * @param bool $required
-     * @param bool $readonly
-     * @param bool $disabled
-     * @param bool $autofocus
      * @param null $groupClass
      * @param null $labelClass
      * @param null $feedbackClass
+     * @param array $model
+     * @param null $modelKey
+     * @param null $class
+     * @param string $pluck
      */
     public function __construct(
         $id = null,
@@ -113,13 +109,13 @@ class Checkbox extends Component
         $emptyOptionText = null,
         $optionValueKey = 'id',
         $optionTextKey = 'name',
-        $required = false,
-        $readonly = false,
-        $disabled = false,
-        $autofocus = false,
         $groupClass = null,
         $labelClass = null,
-        $feedbackClass = null
+        $feedbackClass = null,
+        $model = [],
+        $modelKey = null,
+        $class = null,
+        $pluck = 'id'
     )
     {
         $this->id = $id;
@@ -134,13 +130,58 @@ class Checkbox extends Component
         $this->optionValueKey = $optionValueKey;
         $this->optionTextKey = $optionTextKey;
         $this->value = $value;
-        $this->required = $required;
-        $this->readonly = $readonly;
-        $this->disabled = $disabled;
-        $this->autofocus = $autofocus;
         $this->groupClass = $groupClass;
         $this->labelClass = $labelClass;
         $this->feedbackClass = $feedbackClass;
+        $this->model = $model;
+        $this->modelKey = $modelKey;
+        $this->class = $class;
+
+        if($this->model !== [] && $this->value === [])
+        {
+            if($this->modelKey !== null)
+            {
+                $relationRoute = explode('.', $this->modelKey ?? '');
+
+                if(count($relationRoute) > 1)
+                {
+                    $this->value = $this->model;
+
+                    $i = 1;
+
+                    foreach ($relationRoute as $part)
+                    {
+                        if(count($relationRoute) > $i)
+                        {
+                            if(isset($this->value->{$part}))
+                                $this->value = $this->value->{$part};
+                            else
+                                $this->value = null;
+                        }
+                        else
+                        {
+                            $pluck = $part;
+                        }
+
+                        $i++;
+                    }
+
+                    $this->value = $this->value->pluck($pluck)->all();
+                }
+                else
+                {
+                    $this->value = $this->model->{$this->modelKey};
+                }
+            }
+            else
+            {
+                if($this->name !== null)
+                {
+                    $relationName = explode('[]', $this->name)[0];
+                    $this->value = $this->model->{$relationName}->pluck('id')->all();
+                }
+            }
+        }
     }
 
     /**

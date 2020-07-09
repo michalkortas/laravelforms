@@ -71,9 +71,17 @@ class Nullean extends Component
      */
     public $textNull;
     /**
+     * @var array
+     */
+    public $model;
+    /**
      * @var null
      */
-    public $valueNull;
+    public $modelKey;
+    /**
+     * @var null
+     */
+    public $class;
 
     /**
      * Create a new component instance.
@@ -82,47 +90,44 @@ class Nullean extends Component
      * @param null $name
      * @param null $label
      * @param null $value
-     * @param bool $required
-     * @param bool $readonly
-     * @param bool $disabled
      * @param null $groupClass
      * @param null $labelClass
      * @param null $feedbackClass
-     * @param bool $valueFalse
-     * @param bool $valueTrue
+     * @param int $valueFalse
+     * @param int $valueTrue
      * @param null $valueNull
      * @param string $textFalse
      * @param string $textTrue
      * @param string $textNull
      * @param string $togglerClass
+     * @param array $model
+     * @param null $modelKey
+     * @param null $class
      */
     public function __construct(
         $id = null,
         $name = null,
         $label = null,
         $value = null,
-        $required = false,
-        $readonly = false,
-        $disabled = false,
         $groupClass = null,
         $labelClass = null,
         $feedbackClass = null,
-        $valueFalse = false,
-        $valueTrue = true,
+        $valueFalse = 0,
+        $valueTrue = 1,
         $valueNull = null,
         $textFalse = 'No',
         $textTrue = 'Yes',
         $textNull = '?',
-        $togglerClass = 'btn-secondary'
+        $togglerClass = 'btn-secondary',
+        $model = [],
+        $modelKey = null,
+        $class = null
     )
     {
         $this->id = $id;
         $this->name = $name;
         $this->label = $label;
         $this->value = $value;
-        $this->required = $required;
-        $this->readonly = $readonly;
-        $this->disabled = $disabled;
         $this->groupClass = $groupClass;
         $this->labelClass = $labelClass;
         $this->feedbackClass = $feedbackClass;
@@ -133,6 +138,31 @@ class Nullean extends Component
         $this->textTrue = $textTrue;
         $this->textNull = $textNull;
         $this->togglerClass = $togglerClass;
+        $this->model = $model;
+        $this->modelKey = $modelKey;
+        $this->class = $class;
+
+        if($this->model !== [] && $this->value === null)
+        {
+            $relationRoute = explode('.', $this->modelKey ?? '');
+
+            if(count($relationRoute) > 1)
+            {
+                $this->value = $this->model;
+
+                foreach ($relationRoute as $part)
+                {
+                    if(isset($this->value->{$part}))
+                        $this->value = $this->value->{$part};
+                    else
+                        $this->value = null;
+                }
+            }
+            else
+            {
+                $this->value = $this->model->{$this->modelKey ?? $this->name};
+            }
+        }
     }
 
     /**
@@ -141,11 +171,21 @@ class Nullean extends Component
      * @param  string  $option
      * @return bool
      */
-    public function isSelected($option)
+    public function isTrue($option)
     {
-        if($this->value === null)
-            return $option === $this->value;
-        elseif($this->value != null)
+        if($this->value === '1' || $this->value === true || $this->value === $this->valueTrue)
+            return $option == $this->value;
+    }
+
+    /**
+     * Determine if the given option is the current selected option.
+     *
+     * @param  string  $option
+     * @return bool
+     */
+    public function isFalse($option)
+    {
+        if($this->value === '0' || $this->value === false || $this->value === $this->valueFalse)
             return $option == $this->value;
     }
 
@@ -157,8 +197,8 @@ class Nullean extends Component
      */
     public function isNullable($option)
     {
-        if($this->value === null || $this->value == '')
-            return true;
+        if($this->value === null || $this->value == '' || $this->value === $this->valueNull)
+            return $option === $this->value;
     }
 
     /**

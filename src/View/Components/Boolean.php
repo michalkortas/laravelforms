@@ -19,18 +19,6 @@ class Boolean extends Component
      */
     public $value;
     /**
-     * @var bool
-     */
-    public $readonly;
-    /**
-     * @var bool
-     */
-    public $required;
-    /**
-     * @var bool
-     */
-    public $disabled;
-    /**
      * @var null
      */
     public $groupClass;
@@ -42,10 +30,6 @@ class Boolean extends Component
      * @var null
      */
     public $feedbackClass;
-    /**
-     * @var null
-     */
-    public $id;
     /**
      * @var string
      */
@@ -66,6 +50,22 @@ class Boolean extends Component
      * @var bool
      */
     public $valueFalse;
+    /**
+     * @var array
+     */
+    public $model;
+    /**
+     * @var null
+     */
+    public $modelKey;
+    /**
+     * @var null
+     */
+    public $class;
+    /**
+     * @var null
+     */
+    public $id;
 
     /**
      * Create a new component instance.
@@ -74,9 +74,6 @@ class Boolean extends Component
      * @param null $name
      * @param null $label
      * @param null $value
-     * @param bool $required
-     * @param bool $readonly
-     * @param bool $disabled
      * @param null $groupClass
      * @param null $labelClass
      * @param null $feedbackClass
@@ -85,15 +82,15 @@ class Boolean extends Component
      * @param string $textFalse
      * @param string $textTrue
      * @param string $togglerClass
+     * @param array $model
+     * @param null $modelKey
+     * @param null $class
      */
     public function __construct(
         $id = null,
         $name = null,
         $label = null,
         $value = null,
-        $required = false,
-        $readonly = false,
-        $disabled = false,
         $groupClass = null,
         $labelClass = null,
         $feedbackClass = null,
@@ -101,16 +98,16 @@ class Boolean extends Component
         $valueTrue = true,
         $textFalse = 'No',
         $textTrue = 'Yes',
-        $togglerClass = 'btn-secondary'
+        $togglerClass = 'btn-secondary',
+        $model = [],
+        $modelKey = null,
+        $class = null
     )
     {
         $this->id = $id;
         $this->name = $name;
         $this->label = $label;
         $this->value = $value;
-        $this->required = $required;
-        $this->readonly = $readonly;
-        $this->disabled = $disabled;
         $this->groupClass = $groupClass;
         $this->labelClass = $labelClass;
         $this->feedbackClass = $feedbackClass;
@@ -119,6 +116,31 @@ class Boolean extends Component
         $this->textFalse = $textFalse;
         $this->textTrue = $textTrue;
         $this->togglerClass = $togglerClass;
+        $this->model = $model;
+        $this->modelKey = $modelKey;
+        $this->class = $class;
+
+        if($this->model !== [] && $this->value === null)
+        {
+            $relationRoute = explode('.', $this->modelKey ?? '');
+
+            if(count($relationRoute) > 1)
+            {
+                $this->value = $this->model;
+
+                foreach ($relationRoute as $part)
+                {
+                    if(isset($this->value->{$part}))
+                        $this->value = $this->value->{$part};
+                    else
+                        $this->value = null;
+                }
+            }
+            else
+            {
+                $this->value = $this->model->{$this->modelKey ?? $this->name};
+            }
+        }
     }
 
     /**
