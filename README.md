@@ -24,6 +24,7 @@ Out of the box supports Laravel validation errors.
 MIT
 ## Documentation & usage 
 Documentation is available on package website https://webroad.dev/packages/laravelforms/documentation
+
 Packagist: https://packagist.org/packages/michalkortas/laravelforms
 ## Support
 Laravel 7 is only supported version at this time
