@@ -7,10 +7,6 @@
         @isset($id) id="{{$id}}" @endisset
         @isset($name) name="{{$name}}" @endisset
         class="form-control @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
-        @if($required) required @endif
-        @if($disabled) disabled @endif
-        @if($autofocus) autofocus @endif
-        @if($readonly) readonly @endif
         {{$attributes}}
     >
         @if($empty)
@@ -19,7 +15,11 @@
 
         @if(is_object($options))
             @foreach($options ?? [] as $object)
-                <option {{ $isSelected($object->$optionValueKey) ? 'selected="selected"' : '' }} value="{{$object->$optionValueKey}}">{{$object->$optionTextKey}}</option>
+                <option {{ $isSelected($object->$optionValueKey) ? 'selected="selected"' : '' }} value="{{$object->$optionValueKey}}">
+                    @foreach($optionTextKey ?? [] as $optionText)
+                        {{$object->$optionText}}
+                    @endforeach
+                </option>
             @endforeach
         @elseif(is_array($options))
             @foreach($options ?? [] as $optionValue => $optionText)

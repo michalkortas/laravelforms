@@ -23,26 +23,6 @@ class Password extends Component
      */
     public $placeholder;
     /**
-     * @var bool
-     */
-    public $readonly;
-    /**
-     * @var bool
-     */
-    public $required;
-    /**
-     * @var bool
-     */
-    public $disabled;
-    /**
-     * @var bool
-     */
-    public $autofocus;
-    /**
-     * @var null
-     */
-    public $pattern;
-    /**
      * @var null
      */
     public $groupClass;
@@ -57,24 +37,33 @@ class Password extends Component
     /**
      * @var null
      */
+    public $class;
+    /**
+     * @var null
+     */
+    public $modelKey;
+    /**
+     * @var array
+     */
+    public $model;
+    /**
+     * @var null
+     */
     public $id;
 
     /**
      * Create a new component instance.
      *
-     * @param null $id
      * @param null $name
      * @param null $label
      * @param null $placeholder
      * @param null $value
-     * @param bool $required
-     * @param bool $readonly
-     * @param bool $disabled
-     * @param bool $autofocus
-     * @param null $pattern
      * @param null $groupClass
      * @param null $labelClass
      * @param null $feedbackClass
+     * @param array $model
+     * @param null $modelKey
+     * @param null $class
      */
     public function __construct(
         $id = null,
@@ -82,14 +71,12 @@ class Password extends Component
         $label = null,
         $placeholder = null,
         $value = null,
-        $required = false,
-        $readonly = false,
-        $disabled = false,
-        $autofocus = false,
-        $pattern = null,
         $groupClass = null,
         $labelClass = null,
-        $feedbackClass = null
+        $feedbackClass = null,
+        $model = [],
+        $modelKey = null,
+        $class = null
     )
     {
         $this->id = $id;
@@ -97,14 +84,34 @@ class Password extends Component
         $this->label = $label;
         $this->value = $value;
         $this->placeholder = $placeholder;
-        $this->required = $required;
-        $this->readonly = $readonly;
-        $this->disabled = $disabled;
-        $this->autofocus = $autofocus;
-        $this->pattern = $pattern;
         $this->groupClass = $groupClass;
         $this->labelClass = $labelClass;
         $this->feedbackClass = $feedbackClass;
+        $this->model = $model;
+        $this->modelKey = $modelKey;
+        $this->class = $class;
+
+        if($this->model !== [] && $this->value === null)
+        {
+            $relationRoute = explode('.', $this->modelKey ?? '');
+
+            if(count($relationRoute) > 1)
+            {
+                $this->value = $this->model;
+
+                foreach ($relationRoute as $part)
+                {
+                    if(isset($this->value->{$part}))
+                        $this->value = $this->value->{$part};
+                    else
+                        $this->value = null;
+                }
+            }
+            else
+            {
+                $this->value = $this->model->{$this->modelKey ?? $this->name};
+            }
+        }
     }
 
     /**
