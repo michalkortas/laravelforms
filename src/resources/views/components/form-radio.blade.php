@@ -19,7 +19,9 @@
                     class="form-check-input @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
                     {{$attributes}} {{ $isSelected($object->$optionValueKey) ? 'checked' : '' }}>
                 <label class="form-check-label" for="{{$name}}_val_{{$object->$optionValueKey}}">
-                    {{$object->$optionTextKey}}
+                    @foreach($optionTextKey ?? [] as $optionText)
+                        {{$object->$optionText}}
+                    @endforeach
                 </label>
             </div>
         @endforeach
