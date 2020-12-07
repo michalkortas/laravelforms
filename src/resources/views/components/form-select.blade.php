@@ -17,7 +17,24 @@
             @foreach($options ?? [] as $object)
                 <option {{ $isSelected($object->$optionValueKey) ? 'selected="selected"' : '' }} value="{{$object->$optionValueKey}}">
                     @foreach($optionTextKey ?? [] as $optionText)
-                        {{$object->$optionText}}
+                        @php
+                            $parts = explode('.', $optionText ?? '');
+                            $option = $object->$optionText;
+
+                            if(count($parts) > 1)
+                            {
+                                $option = $object;
+
+                                foreach ($parts as $part)
+                                {
+                                    if(isset($option->{$part}))
+                                        $option = $option->{$part};
+                                    else
+                                        $option = null;
+                                }
+                            }
+                        @endphp
+                        @if(!$loop->first) {{$optionTextSeparator}} @endif {{$option}}
                     @endforeach
                 </option>
             @endforeach
