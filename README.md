@@ -36,9 +36,9 @@ Register new ServiceProvider (only if not exists - Laravel register it automatic
 michalkortas\LaravelForms\LaravelFormsServiceProvider::class
 ```
 
-## Last changes (v1.1.x)
-- Added support for Laravel Models
-- Removed unused parameters
+## Last changes (v1.2.x)
+- Added "option-text-separator" as string option that define separator when option use multiple values. Space is always default separator.
+- Added support for relation path when define own option-text-key, eq. :option-text-key="['created_user.id']"
 
 ## Example
 ### Simple Text input
