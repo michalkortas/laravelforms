@@ -53,6 +53,10 @@ class Select extends Component
     /**
      * @var string
      */
+    public $optionTextSeparator;
+    /**
+     * @var string
+     */
     public $optionValueKey;
     /**
      * @var null
@@ -84,6 +88,7 @@ class Select extends Component
      * @param null $emptyOptionText
      * @param string $optionValueKey
      * @param string $optionTextKey
+     * @param string $optionTextSeparator
      * @param null $groupClass
      * @param null $labelClass
      * @param null $feedbackClass
@@ -102,6 +107,7 @@ class Select extends Component
         $emptyOptionText = null,
         $optionValueKey = 'id',
         $optionTextKey = 'name',
+        $optionTextSeparator = ' ',
         $groupClass = null,
         $labelClass = null,
         $feedbackClass = null,
@@ -120,6 +126,7 @@ class Select extends Component
         $this->emptyOptionText = $emptyOptionText;
         $this->optionValueKey = $optionValueKey;
         $this->optionTextKey = $optionTextKey;
+        $this->optionTextSeparator = $optionTextSeparator;
         $this->value = $value;
         $this->groupClass = $groupClass;
         $this->labelClass = $labelClass;
@@ -154,6 +161,8 @@ class Select extends Component
         {
             $this->optionTextKey = [$this->optionTextKey];
         }
+
+
     }
 
     /**
