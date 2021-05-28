@@ -9,8 +9,15 @@ class GetValueService
         if($model->model !== [] && $model->value === null)
         {
             $value = data_get($model->model, $model->modelKey ?? $model->name);
+
+            return $value;
         }
 
-        return $value ?? null;
+        if($model->value !== null)
+        {
+            return $model->value;
+        }
+
+        return null;
     }
 }
