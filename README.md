@@ -27,7 +27,7 @@ Documentation is available on package website https://webroad.dev/packages/larav
 
 Packagist: https://packagist.org/packages/michalkortas/laravelforms
 ## Support
-Laravel 7 is only supported version at this time
+Laravel 7 and 8 are only supported versions
 ## Installation
 <code>composer require michalkortas/laravelforms</code>
 
@@ -36,9 +36,8 @@ Register new ServiceProvider (only if not exists - Laravel register it automatic
 michalkortas\LaravelForms\LaravelFormsServiceProvider::class
 ```
 
-## Last changes (v1.2.x)
-- Added "option-text-separator" as string option that define separator when option use multiple values. Space is always default separator.
-- Added support for relation path when define own option-text-key, eq. :option-text-key="['created_user.id']"
+## Last changes (v1.3.x)
+- Get value from model relations is now realized by native Laravel function data_get()
 
 ## Example
 ### Simple Text input
