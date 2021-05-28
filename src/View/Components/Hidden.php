@@ -3,6 +3,7 @@
 namespace michalkortas\LaravelForms\View\Components;
 
 use Illuminate\View\Component;
+use michalkortas\LaravelForms\Services\GetValueService;
 
 class Hidden extends Component
 {
@@ -92,27 +93,7 @@ class Hidden extends Component
         $this->modelKey = $modelKey;
         $this->class = $class;
 
-        if($this->model !== [] && $this->value === null)
-        {
-            $relationRoute = explode('.', $this->modelKey ?? '');
-
-            if(count($relationRoute) > 1)
-            {
-                $this->value = $this->model;
-
-                foreach ($relationRoute as $part)
-                {
-                    if(isset($this->value->{$part}))
-                        $this->value = $this->value->{$part};
-                    else
-                        $this->value = null;
-                }
-            }
-            else
-            {
-                $this->value = $this->model->{$this->modelKey ?? $this->name};
-            }
-        }
+        $this->value = GetValueService::getValue($this);
     }
 
     /**
