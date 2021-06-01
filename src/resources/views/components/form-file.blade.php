@@ -7,7 +7,7 @@
         type="file"
         @isset($id) id="{{$id}}" @endisset
         @isset($name) name="{{$name}}" @endisset
-        class="form-control @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
+        class="form-control-file @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
         placeholder="{{$placeholder ?? $label ?? ''}}"
         {{$attributes}}
     >
