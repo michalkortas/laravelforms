@@ -19,6 +19,7 @@ use michalkortas\LaravelForms\View\Components\SelectMultiple;
 use michalkortas\LaravelForms\View\Components\Text;
 use michalkortas\LaravelForms\View\Components\Textarea;
 use michalkortas\LaravelForms\View\Components\Url;
+use michalkortas\LaravelForms\View\Components\File;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelFormsServiceProvider extends ServiceProvider
@@ -45,6 +46,7 @@ class LaravelFormsServiceProvider extends ServiceProvider
             Text::class,
             Textarea::class,
             Url::class,
+            File::class,
         ]);
     }
 

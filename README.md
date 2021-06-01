@@ -19,6 +19,7 @@ Out of the box supports Laravel validation errors.
 - Text
 - Textarea
 - Url 
+- File
 
 ## Licence
 MIT
@@ -36,8 +37,9 @@ Register new ServiceProvider (only if not exists - Laravel register it automatic
 michalkortas\LaravelForms\LaravelFormsServiceProvider::class
 ```
 
-## Last changes (v1.3.x)
-- Get value from model relations is now realized by native Laravel function data_get()
+## Last changes (v1.4.x)
+- Added file input
+- Remove margin & paddings from hidden input group to avoid unwanted blank spaces
 
 ## Example
 ### Simple Text input
