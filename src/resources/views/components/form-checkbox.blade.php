@@ -21,21 +21,7 @@
                 <label class="form-check-label" for="{{$name}}_val_{{$object->$optionValueKey}}">
                     @foreach($optionTextKey ?? [] as $optionText)
                         @php
-                            $parts = explode('.', $optionText ?? '');
-                            $option = $object->$optionText;
-
-                            if(count($parts) > 1)
-                            {
-                                $option = $object;
-
-                                foreach ($parts as $part)
-                                {
-                                    if(isset($option->{$part}))
-                                        $option = $option->{$part};
-                                    else
-                                        $option = null;
-                                }
-                            }
+                            $option = data_get($object, $optionText);
                         @endphp
                         @if(!$loop->first) {{$optionTextSeparator}} @endif {{$option}}
                     @endforeach
