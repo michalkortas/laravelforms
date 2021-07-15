@@ -15,7 +15,8 @@
 
         @if(is_object($options))
             @foreach($options ?? [] as $object)
-                <option {{ $isSelected($object->$optionValueKey) ? 'selected="selected"' : '' }} value="{{$object->$optionValueKey}}">
+                <option {{ $isSelected($object->$optionValueKey) ? 'selected' : '' }} value="{{$object->$optionValueKey}}">
+
                     @foreach($optionTextKey ?? [] as $optionText)
                         @php
                             $option = data_get($object, $optionText);
