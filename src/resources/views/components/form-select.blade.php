@@ -26,7 +26,7 @@
             @endforeach
         @elseif(is_array($options))
             @foreach($options ?? [] as $optionValue => $optionText)
-                <option {{ $isSelected($optionValue) ? 'selected="selected"' : '' }} value="{{$optionValue}}">{{$optionText}}</option>
+                <option {{ $isSelected($optionValue) ? 'selected' : '' }} value="{{$optionValue}}">{{$optionText}}</option>
             @endforeach
         @endif
     </select>
