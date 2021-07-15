@@ -8,7 +8,7 @@
     @isset($name) name="{{$name}}" @endisset
         class="form-control @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
         {{$attributes}}
-        multiple="true"
+        multiple
         aria-multiselectable="true"
     >
         @if($empty)
