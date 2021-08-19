@@ -67,6 +67,14 @@ class Boolean extends Component
      * @var null
      */
     public $id;
+    /**
+     * @var mixed|null
+     */
+    private $classTrue;
+    /**
+     * @var mixed|null
+     */
+    private $classFalse;
 
     /**
      * Create a new component instance.
@@ -102,7 +110,9 @@ class Boolean extends Component
         $togglerClass = 'btn-secondary',
         $model = [],
         $modelKey = null,
-        $class = null
+        $class = null,
+        $classTrue = 'state-true',
+        $classFalse = 'state-false'
     )
     {
         $this->id = $id;
@@ -120,6 +130,8 @@ class Boolean extends Component
         $this->model = $model;
         $this->modelKey = $modelKey;
         $this->class = $class;
+        $this->classTrue = $classTrue;
+        $this->classFalse = $classFalse;
 
         $this->value = GetValueService::getValue($this);
     }

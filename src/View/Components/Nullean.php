@@ -87,6 +87,18 @@ class Nullean extends Component
      * @var null
      */
     public $valueNull;
+    /**
+     * @var mixed|string
+     */
+    private $classNull;
+    /**
+     * @var mixed|string
+     */
+    private $classFalse;
+    /**
+     * @var mixed|string
+     */
+    private $classTrue;
 
     /**
      * Create a new component instance.
@@ -126,7 +138,10 @@ class Nullean extends Component
         $togglerClass = 'btn-secondary',
         $model = [],
         $modelKey = null,
-        $class = null
+        $class = null,
+        $classNull = 'state-null',
+        $classTrue = 'state-true',
+        $classFalse = 'state-false'
     )
     {
         $this->id = $id;
@@ -146,6 +161,9 @@ class Nullean extends Component
         $this->model = $model;
         $this->modelKey = $modelKey;
         $this->class = $class;
+        $this->classTrue = $classTrue;
+        $this->classFalse = $classFalse;
+        $this->classNull = $classNull;
 
         $this->value = GetValueService::getValue($this);
     }
