@@ -11,7 +11,7 @@
                 value="{{$valueFalse}}"
                 autocomplete="off"
                 {{ $isFalse($valueFalse) ? 'checked' : '' }}
-                class="@error($name) is-invalid @enderror" {{$attributes}}>
+                class="@error($name) is-invalid @enderror @isset($classFalse) {{$classFalse}} @endif" {{$attributes}}>
             {{$textFalse}}
         </label>
         <label style="width: 33.33%" class="btn nullable-option {{$togglerClass}} {{ $isNullable($valueNull) ? 'active' : '' }}">
@@ -21,7 +21,7 @@
                 value="{{$valueNull}}"
                 autocomplete="off"
                 {{ $isNullable($valueNull) ? 'checked' : '' }}
-                class="@error($name) is-invalid @enderror" {{$attributes}}>
+                class="@error($name) is-invalid @enderror @isset($classNull) {{$classNull}} @endif" {{$attributes}}>
             {{$textNull}}
         </label>
         <label style="width: 33.33%" class="btn true-option {{$togglerClass}} {{ $isTrue($valueTrue) ? 'active' : '' }}">
@@ -31,7 +31,7 @@
                 value="{{$valueTrue}}"
                 autocomplete="off"
                 {{ $isTrue($valueTrue) ? 'checked' : '' }}
-                class="@error($name) is-invalid @enderror" {{$attributes}}>
+                class="@error($name) is-invalid @enderror @isset($classTrue) {{$classTrue}} @endif" {{$attributes}}>
             {{$textTrue}}
         </label>
     </div>
