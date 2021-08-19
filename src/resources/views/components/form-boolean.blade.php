@@ -4,24 +4,24 @@
     @endisset
 
     <div class="btn-group w-100 btn-group-toggle" data-toggle="buttons">
-        <label class="btn w-50 {{$togglerClass}} {{ $isSelected($valueFalse) ? 'active' : '' }}">
+        <label class="btn w-50 false-option @isset($classFalse) {{$classFalse}} @endif {{$togglerClass}} {{ $isSelected($valueFalse) ? 'active' : '' }}">
             <input
                 type="radio"
                 @isset($name) name="{{$name}}" @endisset
                 value="{{$valueFalse}}"
                 autocomplete="off"
                 {{ $isSelected($valueFalse) ? 'checked' : '' }}
-                class="@error($name) is-invalid @enderror @isset($classFalse) {{$classFalse}} @endif" {{$attributes}}>
+                class="@error($name) is-invalid @enderror " {{$attributes}}>
             {{$textFalse}}
         </label>
-        <label class="btn w-50 {{$togglerClass}} {{ $isSelected($valueTrue) ? 'active' : '' }}">
+        <label class="btn w-50 true-option @isset($classTrue) {{$classTrue}} @endif {{$togglerClass}} {{ $isSelected($valueTrue) ? 'active' : '' }}">
             <input
                 type="radio"
                 @isset($name) name="{{$name}}" @endisset
                 value="{{$valueTrue}}"
                 autocomplete="off"
                 {{ $isSelected($valueTrue) ? 'checked' : '' }}
-                class="@error($name) is-invalid @enderror @isset($classTrue) {{$classTrue}} @endif" {{$attributes}}>
+                class="@error($name) is-invalid @enderror " {{$attributes}}>
             {{$textTrue}}
         </label>
     </div>

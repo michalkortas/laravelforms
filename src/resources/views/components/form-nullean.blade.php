@@ -4,34 +4,34 @@
     @endisset
 
     <div class="w-100 btn-group btn-group-toggle nullean-input" data-toggle="buttons">
-        <label style="width: 33.33%" class="btn false-option {{$togglerClass}} {{ $isFalse($valueFalse) ? 'active' : '' }}">
+        <label style="width: 33.33%" class="btn false-option {{$togglerClass}} {{ $isFalse($valueFalse) ? 'active' : '' }} @isset($classFalse) {{$classFalse}} @endif">
             <input
                 type="radio"
                 @isset($name) name="{{$name}}" @endisset
                 value="{{$valueFalse}}"
                 autocomplete="off"
                 {{ $isFalse($valueFalse) ? 'checked' : '' }}
-                class="@error($name) is-invalid @enderror @isset($classFalse) {{$classFalse}} @endif" {{$attributes}}>
+                class="@error($name) is-invalid @enderror" {{$attributes}}>
             {{$textFalse}}
         </label>
-        <label style="width: 33.33%" class="btn nullable-option {{$togglerClass}} {{ $isNullable($valueNull) ? 'active' : '' }}">
+        <label style="width: 33.33%" class="btn nullable-option @isset($classNull) {{$classNull}} @endif {{$togglerClass}} {{ $isNullable($valueNull) ? 'active' : '' }}">
             <input
                 type="radio"
                 @isset($name) name="{{$name}}" @endisset
                 value="{{$valueNull}}"
                 autocomplete="off"
                 {{ $isNullable($valueNull) ? 'checked' : '' }}
-                class="@error($name) is-invalid @enderror @isset($classNull) {{$classNull}} @endif" {{$attributes}}>
+                class="@error($name) is-invalid @enderror" {{$attributes}}>
             {{$textNull}}
         </label>
-        <label style="width: 33.33%" class="btn true-option {{$togglerClass}} {{ $isTrue($valueTrue) ? 'active' : '' }}">
+        <label style="width: 33.33%" class="btn true-option {{$togglerClass}} @isset($classTrue) {{$classTrue}} @endif {{ $isTrue($valueTrue) ? 'active' : '' }}">
             <input
                 type="radio"
                 @isset($name) name="{{$name}}" @endisset
                 value="{{$valueTrue}}"
                 autocomplete="off"
                 {{ $isTrue($valueTrue) ? 'checked' : '' }}
-                class="@error($name) is-invalid @enderror @isset($classTrue) {{$classTrue}} @endif" {{$attributes}}>
+                class="@error($name) is-invalid @enderror " {{$attributes}}>
             {{$textTrue}}
         </label>
     </div>
