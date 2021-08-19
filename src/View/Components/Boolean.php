@@ -70,11 +70,11 @@ class Boolean extends Component
     /**
      * @var mixed|null
      */
-    private $classTrue;
+    public $classTrue;
     /**
      * @var mixed|null
      */
-    private $classFalse;
+    public $classFalse;
 
     /**
      * Create a new component instance.

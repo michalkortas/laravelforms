@@ -90,15 +90,15 @@ class Nullean extends Component
     /**
      * @var mixed|string
      */
-    private $classNull;
+    public $classNull;
     /**
      * @var mixed|string
      */
-    private $classFalse;
+    public $classFalse;
     /**
      * @var mixed|string
      */
-    private $classTrue;
+    public $classTrue;
 
     /**
      * Create a new component instance.
