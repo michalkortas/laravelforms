@@ -20,6 +20,7 @@ Out of the box supports Laravel validation errors.
 - Textarea
 - Url 
 - File
+- Time
 
 ## Licence
 MIT
