@@ -86,7 +86,7 @@ class DateTime extends Component
         $this->modelKey = $modelKey;
         $this->class = $class;
 
-        $this->value = GetValueService::getValue($this);
+        $this->value = $this->parseToHtmlDateTime(GetValueService::getValue($this));
     }
 
     /**
@@ -97,5 +97,10 @@ class DateTime extends Component
     public function render()
     {
         return view('laravelforms::components.form-date-time');
+    }
+
+    private function parseToHtmlDateTime($dateTime)
+    {
+        return str_replace(' ', 'T', $dateTime);
     }
 }
