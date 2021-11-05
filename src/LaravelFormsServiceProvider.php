@@ -21,6 +21,7 @@ use michalkortas\LaravelForms\View\Components\Textarea;
 use michalkortas\LaravelForms\View\Components\Url;
 use michalkortas\LaravelForms\View\Components\File;
 use michalkortas\LaravelForms\View\Components\Time;
+use michalkortas\LaravelForms\View\Components\Month;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelFormsServiceProvider extends ServiceProvider
@@ -49,6 +50,7 @@ class LaravelFormsServiceProvider extends ServiceProvider
             Url::class,
             File::class,
             Time::class,
+            Month::class,
         ]);
     }
 

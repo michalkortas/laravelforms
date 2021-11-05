@@ -21,6 +21,7 @@ Out of the box supports Laravel validation errors.
 - Url 
 - File
 - Time
+- Month
 
 ## Licence
 MIT
@@ -37,10 +38,6 @@ Register new ServiceProvider (only if not exists - Laravel register it automatic
 ```php
 michalkortas\LaravelForms\LaravelFormsServiceProvider::class
 ```
-
-## Last changes (v1.4.x)
-- Added file input
-- Remove margin & paddings from hidden input group to avoid unwanted blank spaces
 
 ## Example
 ### Simple Text input
