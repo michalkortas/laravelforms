@@ -72,7 +72,8 @@ class DateTime extends Component
         $feedbackClass = null,
         $model = [],
         $modelKey = null,
-        $class = null
+        $class = null,
+        $withSeconds = true,
     )
     {
         $this->id = $id;
@@ -86,7 +87,7 @@ class DateTime extends Component
         $this->modelKey = $modelKey;
         $this->class = $class;
 
-        $this->value = $this->parseToHtmlDateTime(GetValueService::getValue($this));
+        $this->value = $this->parseToHtmlDateTime(GetValueService::getValue($this), $withSeconds);
     }
 
     /**
@@ -99,8 +100,13 @@ class DateTime extends Component
         return view('laravelforms::components.form-date-time');
     }
 
-    private function parseToHtmlDateTime($dateTime)
+    private function parseToHtmlDateTime($dateTime, $withSeconds = true)
     {
-        return str_replace(' ', 'T', $dateTime);
+        $length = 16;
+
+        if($withSeconds)
+            $length = 19;
+
+        return substr(str_replace(' ', 'T', $dateTime), 0, $length);
     }
 }
