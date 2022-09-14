@@ -16,6 +16,9 @@
                     value="{{$object->$optionValueKey}}"
                     @isset($id) id="{{$id}}" @endisset
                 @isset($name) name="{{$name}}" @endisset
+                    @if($required && $loop->first)
+                        required
+                    @endif
                     class="form-check-input @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
                     {{$attributes}} {{ $isSelected($object->$optionValueKey) ? 'checked' : '' }}>
                 <label class="form-check-label" for="{{$name}}_val_{{$object->$optionValueKey}}">
@@ -35,6 +38,9 @@
                     id="{{$name}}_val_{{$optionValue}}"
                     type="radio"
                     value="{{$optionValue}}"
+                    @if($required && $loop->first)
+                        required
+                    @endif
                     @isset($id) id="{{$id}}" @endisset
                     @isset($name) name="{{$name}}" @endisset
                     class="form-check-input @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"

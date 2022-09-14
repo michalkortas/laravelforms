@@ -79,6 +79,10 @@ class Radio extends Component
      * @var null
      */
     public $id;
+    /**
+     * @var false|mixed
+     */
+    public $required;
 
     /**
      * Create a new component instance.
@@ -120,7 +124,8 @@ class Radio extends Component
         $feedbackClass = null,
         $model = [],
         $modelKey = null,
-        $class = null
+        $class = null,
+        $required = false
     )
     {
         $this->id = $id;
@@ -142,6 +147,7 @@ class Radio extends Component
         $this->model = $model;
         $this->modelKey = $modelKey;
         $this->class = $class;
+        $this->required = $required;
 
         $this->value = GetValueService::getValue($this);
 
