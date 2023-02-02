@@ -51,6 +51,7 @@ class Text extends Component
      * @var null
      */
     public $id;
+    public $type;
 
     /**
      * Create a new component instance.
@@ -78,7 +79,8 @@ class Text extends Component
         $feedbackClass = null,
         $model = [],
         $modelKey = null,
-        $class = null
+        $class = null,
+        $type = 'text'
     )
     {
         $this->id = $id;
@@ -92,6 +94,7 @@ class Text extends Component
         $this->model = $model;
         $this->modelKey = $modelKey;
         $this->class = $class;
+        $this->type = $type;
 
         $this->value = GetValueService::getValue($this);
     }

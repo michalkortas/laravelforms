@@ -5,7 +5,7 @@
 
     <input
         value="{{old($name ?? '') ?? $value}}"
-        type="text"
+        type="{{$type}}"
         @isset($id) id="{{$id}}" @endisset
         @isset($name) name="{{$name}}" @endisset
         class="form-control @isset($class) {{$class}} @endisset @isset($name) @error($name) is-invalid @enderror @endisset"
