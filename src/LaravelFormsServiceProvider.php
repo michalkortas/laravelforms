@@ -15,6 +15,7 @@ use michalkortas\LaravelForms\View\Components\Password;
 use michalkortas\LaravelForms\View\Components\Phone;
 use michalkortas\LaravelForms\View\Components\Radio;
 use michalkortas\LaravelForms\View\Components\Select;
+use michalkortas\LaravelForms\View\Components\RichSelect;
 use michalkortas\LaravelForms\View\Components\SelectMultiple;
 use michalkortas\LaravelForms\View\Components\Text;
 use michalkortas\LaravelForms\View\Components\Textarea;
@@ -44,6 +45,7 @@ class LaravelFormsServiceProvider extends ServiceProvider
             Phone::class,
             Radio::class,
             Select::class,
+            RichSelect::class,
             SelectMultiple::class,
             Text::class,
             Textarea::class,
